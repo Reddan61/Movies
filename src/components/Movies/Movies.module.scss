@@ -1,0 +1,69 @@
+@use "../../styles/_vars.scss" as vars;
+
+.movies {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    &_dark {
+        background-color: black;
+    }
+    &__container {
+        width: 100%;
+        max-width: vars.$container;
+        display: flex;
+        flex-direction: column;
+        @media (max-width: vars.$container) {
+            padding: 0 20px;
+        }
+    }
+
+    &__header {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 40px 0;
+    }
+    &__left {
+        display: flex;
+        span {
+            font-size: 30px;
+        }
+        &_dark {
+            color:white;
+        }
+    }
+    &__right {
+        display: flex;
+        gap: 15px;
+        span {
+            font-size: 18px;
+            cursor: pointer;
+        }
+        &_dark {
+            color:white
+        }
+    }
+    &__items {
+        display: grid;
+        grid-template-columns: repeat(4,285px);
+        column-gap: 20px;
+        row-gap: 40px;
+        width: 100%;
+        margin: 0 auto;
+        @media (max-width:vars.$container) {
+            grid-template-columns: repeat(3,285px);
+            width: calc(3*285px + 2 * 20px);
+        }
+        @media (max-width:920px) {
+            grid-template-columns: repeat(2,285px);
+            width: calc(2*285px + 1 * 20px);
+        }
+        @media (max-width:615px) {
+            grid-template-columns: repeat(1,285px);
+            width: 285px;
+        }
+    }
+    &__pagination {
+        padding: 50px 0;
+    }
+}

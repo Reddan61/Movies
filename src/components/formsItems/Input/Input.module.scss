@@ -1,0 +1,45 @@
+@use "../../../styles/vars.scss" as vars;
+
+.input {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border: .5px solid vars.$primary;
+    padding: 4px 5px;
+    width: 100%;
+    &_dark {
+        border: .5px solid white;
+    }
+    &__item {
+        width: 100%;
+        &:focus,&:not([value=""]) {
+            + span {
+                display: none;
+            }
+        }
+        &_dark {
+            color: white;
+            background-color: black;
+        }
+    }
+    &__body {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+    &__placeholder {
+        position: absolute;
+        opacity: 0.7;
+        pointer-events: none;
+        &_dark {
+            opacity: 1;
+            color:white;
+        }
+    }
+    &__img {
+        &_dark {
+            background-color: black;
+        }
+    }
+}

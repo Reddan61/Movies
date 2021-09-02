@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { Redirect, Route, Switch } from "react-router";
+import { useSelector } from 'react-redux'
+import Header from "./components/Header/Header.jsx"
+import Movies from "./components/Movies/Movies.jsx"
+import Movie from "./components/Movie/Movie.jsx"
+import classes from './App.module.scss';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const {isLightTheme} = useSelector(state => state.Config)
+
+  return <div className = {`
+    ${classes.app}
+    ${!isLightTheme && classes.app_dark}
+  `}>
+    <Header />
+    <Switch>
+      <Route path = {"/"} exact render = {() => <Movies />}/>
+      <Route path = {"/movie/:id"} exact render = {() => <Movie />}/>
+      <Route render={() => <Redirect to={'/'} />} />
+    </Switch>
+  </div>
 }
 
 export default App;

@@ -1,0 +1,73 @@
+@use "../../styles/_vars.scss" as vars;
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid rgba(224,219,219,.4);
+    &_dark {
+        background-color: black;
+    }
+    &__container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: vars.$container;
+        height: 80px;
+        width: 100%;
+        @media (max-width: vars.$container) {
+            padding: 0 15px;
+        }
+    }
+    &__left {
+        display: flex;
+        align-items: center;
+        gap:30px;
+    }
+    &__right {
+        display: flex;
+        align-items: center;
+    }
+    &__dark {
+        color:black;
+        font-size: 15px;
+        &_dark {
+            color:white;
+        }
+        @media (max-width: 530px) {
+            display: none;
+        }
+    }
+    &__switcher {
+        position: relative;
+        width: 38px;
+        height: 18px;
+        background-color: #E0D8D8;
+        border-radius: 22px;
+        margin-left: 15px;
+        &::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 2px;
+            width: 12px;
+            height: 12px;
+            transform: translateY(-50%);
+            border-radius: 50%;
+            background: #b4a3a3;
+        }
+        &_dark {
+            &::after {
+                left: auto;
+                right: 2px;
+                background: black;
+            }
+        }
+    }
+    &__input {
+        width: 280px;
+        @media (max-width: 430px) {
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,102 @@
+@use "../../styles/vars" as vars;
+
+.pagination {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    &__container {
+        display: flex;
+        height: 30px;
+    }
+    &__center {
+        display: flex;
+        align-items: flex-end;
+        gap: 5px;
+    }
+    &__number {
+        cursor: pointer;
+        &_active {
+            font-size: 18px;
+        }
+        &_dark {
+            color:white;
+        }
+    }
+    &__left {
+        display: flex;
+        
+    }
+    &__right {
+        display: flex;
+    }
+    &__arrow {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        margin: 0 10px 0;
+        cursor: pointer;
+        &_dark {
+            &::after,&::before {
+                background-color: white !important;
+            }
+        }
+        &::after,&::before {
+            position: absolute;
+            content: "";
+            // top: 0;
+            // left: 0;
+            width:8px;
+            height: 1px;
+            background-color: vars.$primary;
+        }
+        &_left {
+            &::after {
+                transform: rotate(45deg);
+                margin-bottom: 5px;
+            }
+            &::before {
+                transform: rotate(-45deg);
+                margin-bottom: 10px;
+            }
+        }
+        &_right {
+            &::after {
+                margin-bottom: 5px;
+                transform: rotate(-45deg);
+            }
+            &::before {
+                margin-bottom: 10px;
+                transform: rotate(45deg);
+            }
+        }
+    }
+    &__dots {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        width: 25px;
+        cursor: pointer;
+        &_dark {
+            &::after,&::before,span {
+                background-color: white !important;
+            }
+        }
+        &::before,&::after,span {
+            position: absolute;
+            content: "";
+            width: 2px;
+            height: 2px;
+            border-radius: 50%;
+            background-color: vars.$primary;
+            bottom: 2px;
+        }
+
+        &::before {
+            left: 5px;
+        }
+        &::after {
+            right: 5px;
+        }
+    }
+}

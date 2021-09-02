@@ -1,0 +1,131 @@
+@use "../../styles/_vars.scss" as vars;
+
+.movie {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    &__container {
+        width: 100%;
+        max-width: vars.$container;
+        display: flex;
+        flex-direction: column;
+    }
+    &__header {
+        padding: 30px 0;
+        display: flex;
+        align-items: center;
+        span {
+            font-size: 18px;
+            cursor: pointer;
+        }
+        &_dark {
+            .movie__arrow {
+                &::before,&::after {
+                    background-color: white; 
+                }
+            }
+            color:white !important;
+        }
+    }
+    &__arrow {
+        position: relative;
+        cursor: pointer;
+        margin: 0 15px 0 0;
+        &::after,&::before {
+            position: absolute;
+            content: "";
+            width:8px;
+            height: 1px;
+            background-color: vars.$primary;
+        }
+        &::after {
+            transform: rotate(45deg);
+            top:3px;
+        }
+        &::before {
+            transform: rotate(-45deg);
+            top: -1px;
+        }
+    }
+    &__body {
+        display: flex;
+        gap: 20px;
+    }
+    &__poster {
+        min-width: 382px;
+        min-height: 572px;
+        max-width: 382px;
+        max-height: 572px;
+        position: relative;
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            object-fit: contain;
+        }
+    }
+    &__info {
+        display: flex;
+        flex-direction: column;
+        &_dark {
+            color:white;
+        }
+    }
+    &__title {
+        display: flex;
+        align-items: center;
+        position: relative;
+        span {
+            font-size: 26px;
+        }
+        &_sub {
+            font-size: 20px;
+            font-weight: 700;
+            min-width: 200px;
+            max-width: 200px;
+            overflow: hidden;
+            line-height: 21px;
+        }
+    }
+    &__about {
+        display: flex;
+    }
+
+    &__rating {
+        padding: 30px 0 0;
+        display: flex;
+        align-items: center;
+        > span {
+            margin: 0 10px 0 0;
+        }
+    }
+    &__text {
+        font-size: 15px;
+        line-height: 21px;
+    }
+    &__genre {
+        padding: 45px 0 0;
+    }
+    &__year {
+        padding: 15px 0 0;
+    }
+    &__time {
+        padding: 15px 0 0;
+    }
+    &__starring {
+        padding: 15px 0 0;
+    }
+    &__description {
+        padding: 40px 0 0;
+        font-size: 17px;
+        line-height: 21px;
+    }
+}
+
+
+.icon {
+    &__heart {
+        position: absolute;
+        right: 0;
+    }
+}
