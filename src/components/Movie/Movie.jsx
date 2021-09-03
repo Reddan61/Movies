@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { withRouter } from "react-router"
 import StarRatings from "react-star-ratings"
@@ -17,9 +17,9 @@ const Movie = ({match,history}) => {
     function clickBack() {
         history.push("/")
     }
-    
+
     useEffect(() => {
-       (async function() {
+        (async function() {
             const isError1 = await dispatch(getMovieByIdThunk(match.params.id))
             const isError2 = await dispatch(getMovieCreditsByIdThunk(match.params.id))
             if(isError1 || isError2) {
@@ -82,7 +82,7 @@ const Movie = ({match,history}) => {
                         <div className = {classes.movie__title_sub}>
                             Genre:
                         </div>
-                        <div className = {classes.movie__text}>{genres}</div>
+                        <div className = {classes.movie__text}>{`${genres}`}</div>
                     </div>
                     <div className = {`${classes.movie__year} ${classes.movie__about}`}>
                         <div className = {classes.movie__title_sub}>

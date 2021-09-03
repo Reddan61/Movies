@@ -9,6 +9,9 @@
         max-width: vars.$container;
         display: flex;
         flex-direction: column;
+        @media (max-width:vars.$container) {
+            padding: 0 15px;
+        }
     }
     &__header {
         padding: 30px 0;
@@ -50,23 +53,38 @@
     &__body {
         display: flex;
         gap: 20px;
+        width: 100%;
+        max-width: 100%;
+        @media (max-width: 880px) {
+            flex-direction: column;
+        }
     }
     &__poster {
-        min-width: 382px;
-        min-height: 572px;
-        max-width: 382px;
-        max-height: 572px;
         position: relative;
+        max-width: 250px;
+        min-width: 250px;
+        max-height: 370px;
+        min-height: 370px;
+        @media (min-width:400px) {
+            min-width: 382px;
+            min-height: 572px;
+            max-width: 382px;
+            max-height: 572px;
+        }
         img {
+            width: 100%;
+            height: 100%;
             position: absolute;
             top: 0;
             left: 0;
             object-fit: contain;
         }
+
     }
     &__info {
         display: flex;
         flex-direction: column;
+
         &_dark {
             color:white;
         }
@@ -76,6 +94,12 @@
         align-items: center;
         position: relative;
         span {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            display: inline-block;
+            // word-break: break-all;
+            white-space: normal;
+            max-width: calc(100% - 50px);
             font-size: 26px;
         }
         &_sub {
@@ -102,6 +126,7 @@
     &__text {
         font-size: 15px;
         line-height: 21px;
+        word-break: break-all;
     }
     &__genre {
         padding: 45px 0 0;
@@ -127,5 +152,6 @@
     &__heart {
         position: absolute;
         right: 0;
+        top: -12px;
     }
 }
